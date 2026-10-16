@@ -54,6 +54,12 @@
     var t = esc(texto);
     return enfasis && texto.indexOf(enfasis) > -1 ? t.replace(esc(enfasis), "<em>" + esc(enfasis) + "</em>") : t;
   }
+  /* Correo con un punto de corte después de la @, para que en pantallas
+     angostas se parta en "nombre@" / "dominio.com" y no a mitad de palabra */
+  function correoVisible(correo) {
+    var partes = String(correo).split("@");
+    return partes.length === 2 ? esc(partes[0]) + "@<wbr>" + esc(partes[1]) : esc(correo);
+  }
   function esExterno(url) { return /^https?:\/\//.test(url); }
   function atribExterno(url) { return esExterno(url) ? ' target="_blank" rel="noopener noreferrer"' : ""; }
   var AVISO_PESTANA = '<span class="visualmente-oculto"> (se abre en una pestaña nueva)</span>';
@@ -68,6 +74,7 @@
       var anchoPeq = parseInt((img.pequena.match(/-(\d+)\.webp$/) || [])[1], 10) || Math.round(img.ancho / 2);
       srcset = img.pequena + " " + anchoPeq + "w, " + img.archivo + " " + img.ancho + "w";
     }
+    var estilo = opciones.estilo || (img.enfoque ? "object-position:" + img.enfoque : "");
     var prioridad = opciones.prioridad
       ? ' fetchpriority="high" loading="eager"'
       : ' loading="lazy"';
@@ -76,7 +83,7 @@
       ' width="' + (img.ancho || "") + '" height="' + (img.alto || "") + '"' +
       ' alt="' + esc(opciones.alt != null ? opciones.alt : img.alt) + '"' +
       prioridad + ' decoding="async"' +
-      (opciones.estilo ? ' style="' + esc(opciones.estilo) + '"' : "") + ">";
+      (estilo ? ' style="' + esc(estilo) + '"' : "") + ">";
   }
 
   /* ---------- Encabezado ---------- */
@@ -91,7 +98,7 @@
     return '' +
       '<div class="franja-superior"><div class="contenedor">' +
         "<span>" + esc(C.contacto.ciudad) + " · NIT " + esc(C.sitio.nit) + "</span>" +
-        '<span><a href="mailto:' + esc(C.contacto.correo) + '">' + esc(C.contacto.correo) + "</a> · " +
+        '<span><a href="mailto:' + esc(C.contacto.correo) + '">' + correoVisible(C.contacto.correo) + "</a> · " +
         '<a href="tel:+' + esc(wa.internacional) + '">(+57) ' + esc(wa.numero) + "</a></span>" +
       "</div></div>" +
       '<header class="encabezado"><div class="contenedor">' +
@@ -130,7 +137,7 @@
             '<ul class="pie__contacto">' +
               "<li>" + icono("ubicacion") + '<a href="' + esc(c.mapa) + '"' + atribExterno(c.mapa) + ">" + esc(c.direccion) + ", " + esc(c.ciudad) + AVISO_PESTANA + "</a></li>" +
               "<li>" + icono("telefono") + "<span>(+57) " + telefonos + "</span></li>" +
-              "<li>" + icono("correo") + '<a href="mailto:' + esc(c.correo) + '">' + esc(c.correo) + "</a></li>" +
+              "<li>" + icono("correo") + '<a href="mailto:' + esc(c.correo) + '">' + correoVisible(c.correo) + "</a></li>" +
             "</ul>" +
           "</div>" +
           '<nav aria-label="Sitio"><h2>Sitio</h2><ul class="pie__enlaces">' + enlaces + "</ul></nav>" +
@@ -210,7 +217,7 @@
               '<div><dt>N.° de cuenta</dt><dd><span class="numero-cuenta">' + esc(t.numeroCuenta) + "</span>" + botonCopiar(t.numeroCuenta, "número de cuenta") + "</dd></div>" +
               "<div><dt>" + esc(t.billeteras.nombre) + "</dt><dd>" + esc(t.billeteras.numero) + botonCopiar(t.billeteras.numero.replace(/\s/g, ""), "número de " + t.billeteras.nombre) + "</dd></div>" +
             "</dl>" +
-            '<p class="nota-soporte">' + esc(t.nota) + ' <a href="mailto:' + esc(C.contacto.correo) + '?subject=' + encodeURIComponent("Soporte de donación") + '">' + esc(C.contacto.correo) + "</a> · " +
+            '<p class="nota-soporte">' + esc(t.nota) + ' <a href="mailto:' + esc(C.contacto.correo) + '?subject=' + encodeURIComponent("Soporte de donación") + '">' + correoVisible(C.contacto.correo) + "</a> · " +
               '<a href="' + esc(enlaceWhatsApp(wa.principal, "Hola, FUNUDEH. Envío el soporte de mi donación.")) + '" target="_blank" rel="noopener noreferrer">WhatsApp ' + esc(wa.principal.numero) + AVISO_PESTANA + "</a></p>" +
             '<p role="status" class="visualmente-oculto" id="estado-copiado"></p>' +
           "</article>" +
@@ -244,7 +251,8 @@
 
     var pr = C.proyectos;
     function tarjeta(p, i, grande) {
-      var img = p.imagenes[0];
+      var n = parseInt(p.fotoInicio, 10);
+      var img = p.imagenes[(n >= 1 && n <= p.imagenes.length) ? n - 1 : 0];
       return '<article class="tarjeta-proyecto' + (grande ? " tarjeta-proyecto--grande" : "") + '">' +
         '<div class="tarjeta-proyecto__foto">' + imagen(img, { sizes: grande ? "(max-width: 900px) 100vw, 700px" : "(max-width: 900px) 100vw, 480px" }) + "</div>" +
         '<p class="antetitulo">' + String(i + 1).padStart(2, "0") + " · " + esc(p.aliados) + "</p>" +
@@ -438,7 +446,7 @@
           '<ul class="info-lista">' +
             "<li>" + icono("ubicacion", 22) + '<div><span class="etiqueta">Dirección</span>' + esc(c.direccion) + ", " + esc(c.ciudad) + '<br><a href="' + esc(c.mapa) + '" target="_blank" rel="noopener noreferrer">Ver en Google Maps' + AVISO_PESTANA + "</a></div></li>" +
             "<li>" + icono("telefono", 22) + '<div><span class="etiqueta">Teléfonos</span>(+57) ' + telefonos + "</div></li>" +
-            "<li>" + icono("correo", 22) + '<div><span class="etiqueta">Correo electrónico</span><a href="mailto:' + esc(c.correo) + '">' + esc(c.correo) + "</a></div></li>" +
+            "<li>" + icono("correo", 22) + '<div><span class="etiqueta">Correo electrónico</span><a href="mailto:' + esc(c.correo) + '">' + correoVisible(c.correo) + "</a></div></li>" +
           "</ul>" +
           '<div class="tarjeta-whatsapp sobre-oscuro">' +
             "<h2>WhatsApp</h2>" +
@@ -631,7 +639,7 @@
         }).catch(function () {
           estado.className = "estado-formulario estado-formulario--error";
           estado.innerHTML = "No pudimos enviar el mensaje. Escríbenos directamente a " +
-            '<a href="mailto:' + esc(C.contacto.correo) + '">' + esc(C.contacto.correo) + "</a>.";
+            '<a href="mailto:' + esc(C.contacto.correo) + '">' + correoVisible(C.contacto.correo) + "</a>.";
         }).then(function () { boton.disabled = false; });
         return;
       }
@@ -640,7 +648,7 @@
         (datos.telefono ? "\nTeléfono: " + datos.telefono : "") + "\n\n" + datos.mensaje;
       window.location.href = "mailto:" + C.contacto.correo +
         "?subject=" + encodeURIComponent(cp.asunto) + "&body=" + encodeURIComponent(cuerpo);
-      estado.innerHTML = esc(cp.exitoCorreo) + ' <a href="mailto:' + esc(C.contacto.correo) + '">' + esc(C.contacto.correo) + "</a>.";
+      estado.innerHTML = esc(cp.exitoCorreo) + ' <a href="mailto:' + esc(C.contacto.correo) + '">' + correoVisible(C.contacto.correo) + "</a>.";
     });
   }
 

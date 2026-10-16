@@ -15,6 +15,13 @@
      usan para que la página no "salte" mientras carga.
    - Si un campo de enlace queda vacío "", el sitio muestra el aviso de
      pendiente en lugar del botón (por ejemplo, la pasarela de pagos).
+
+   Vista previa al compartir (WhatsApp / Facebook):
+   - La foto y el título que aparecen al compartir el enlace NO se cambian
+     aquí: están en las etiquetas "og:" dentro de cada archivo .html, porque
+     WhatsApp y Facebook no leen este archivo.
+   - Cuando tengan dominio, og:image y og:url deben cambiarse a direcciones
+     completas (https://www.DOMINIO.org/...). Ver LEEME.md, "Antes de publicar".
    ===================================================================== */
 
 window.CONTENIDO = {
@@ -210,6 +217,14 @@ window.CONTENIDO = {
     titulo: "Arte, memoria y sanación para la comunidad",
     intro: "Programas que desarrollamos en Tuluá con el apoyo de instituciones aliadas."
   },
+  /* fotoInicio: qué foto de la lista "imagenes" del proyecto se muestra en la
+     tarjeta de Inicio (1 = la primera, 2 = la segunda...). Para usar una foto
+     nueva, agrégala primero a la lista "imagenes" de ese proyecto.
+     OJO: el primer proyecto sale en la tarjeta GRANDE de Inicio, que es alta:
+     funciona mejor con fotos verticales o cuadradas. Las panorámicas (muy
+     anchas) se recortan demasiado y se pierde a las personas.
+     enfoque (opcional, en cada foto): qué parte se conserva al recortar.
+     "50% 50%" = el centro; "50% 70%" = más abajo; "30% 50%" = más a la izquierda. */
   proyectos: [
     {
       id: "uparu",
@@ -224,6 +239,7 @@ window.CONTENIDO = {
       nota: "Fortalecido por el programa Parches en Paz de la Gobernación del Valle.",
       resumen: "Escuela intergeneracional de encuentros para jóvenes (14-28 años) en Tuluá: círculos de juntanza (sanación ancestral), formación en marimba de chonta y fotografía documental («Galería de Memoria Viva»).",
       logo: { archivo: "imagenes/logo-uparu.webp", ancho: 360, alto: 331, alt: "Logo del Laboratorio Cultural UPARU" },
+      fotoInicio: 2, /* la foto vertical del tambor, para la tarjeta grande */
       imagenes: [
         {
           archivo: "imagenes/proyecto-uparu.webp", pequena: "imagenes/proyecto-uparu-800.webp",
@@ -235,7 +251,8 @@ window.CONTENIDO = {
           archivo: "imagenes/proyecto-uparu-2.webp", pequena: "imagenes/proyecto-uparu-2-600.webp",
           ancho: 960, alto: 1280,
           alt: "Un formador con camiseta de la Fundación Ubuntu enseña a dos jóvenes a tocar el tambor.",
-          pie: "Práctica de percusión"
+          pie: "Práctica de percusión",
+          enfoque: "50% 72%"
         }
       ]
     },
@@ -253,6 +270,7 @@ window.CONTENIDO = {
       nota: "",
       resumen: "Evento cultural de tres días: saberes estéticos, pasarelas culturales, conversatorios con sabedores de San Basilio de Palenque y emprendimientos NARP locales.",
       logo: null,
+      fotoInicio: 1,
       imagenes: [
         {
           archivo: "imagenes/proyecto-expoafro.webp", pequena: "imagenes/proyecto-expoafro-800.webp",
@@ -282,6 +300,7 @@ window.CONTENIDO = {
       nota: "",
       resumen: "Arte-terapia, murales comunitarios, cuentoterapia y percusión para promover la reconciliación y prevenir violencias en la niñez y juventud.",
       logo: null,
+      fotoInicio: 1,
       imagenes: [
         {
           archivo: "imagenes/proyecto-crearte.webp", pequena: "imagenes/proyecto-crearte-800.webp",

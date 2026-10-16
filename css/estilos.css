@@ -52,7 +52,13 @@ body {
   font-size: 1.0625rem;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
+  overflow-wrap: break-word;
 }
+/* Correos, teléfonos y enlaces largos se parten para no causar scroll horizontal en móvil */
+a[href^="mailto:"], .pie p, .nota-soporte, .datos-banco dd { overflow-wrap: anywhere; }
+a[href^="tel:"] { white-space: nowrap; } /* un teléfono no se parte en dos líneas */
+/* Los hijos de filas flexibles pueden encogerse (si no, el texto largo empuja el ancho) */
+.pie__contacto li > *, .info-lista li > *, .datos-banco dd, .franja-superior span { min-width: 0; }
 img { max-width: 100%; height: auto; display: block; }
 h1, h2, h3, h4 { margin: 0; font-family: var(--fuente-titulo); font-weight: 500; line-height: 1.12; letter-spacing: -0.01em; }
 p { margin: 0; }
@@ -167,7 +173,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
 }
 .hero .contenedor { padding-block: 88px; }
 .hero__texto { max-width: 640px; display: flex; flex-direction: column; gap: 24px; }
-.hero .antetitulo { color: var(--ocre); }
+.hero .antetitulo { color: var(--ocre); text-shadow: 0 1px 2px rgba(20, 12, 8, 0.7), 0 0 18px rgba(20, 12, 8, 0.55); }
+.hero h1, .hero__sub { text-shadow: 0 1px 14px rgba(20, 12, 8, 0.45); }
 .hero h1 { font-size: clamp(2.5rem, 5.4vw, 4.25rem); font-weight: 400; line-height: 1.04; letter-spacing: -0.015em; }
 .hero h1 em { color: var(--ocre); font-style: italic; }
 .hero__sub { font-size: clamp(1.0625rem, 1.6vw, 1.3125rem); line-height: 1.55; color: var(--texto-claro-2); max-width: 580px; }
@@ -176,7 +183,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
 
 @media (max-width: 720px) {
   .hero { align-items: flex-end; min-height: 640px; }
-  .hero::before { background: linear-gradient(0deg, rgba(28, 17, 12, 0.95) 0%, rgba(28, 17, 12, 0.85) 50%, rgba(28, 17, 12, 0.3) 85%, rgba(28, 17, 12, 0.15) 100%); }
+  .hero::before { background: linear-gradient(0deg, rgba(28, 17, 12, 0.96) 0%, rgba(28, 17, 12, 0.9) 55%, rgba(28, 17, 12, 0.8) 70%, rgba(28, 17, 12, 0.3) 88%, rgba(28, 17, 12, 0.15) 100%); }
+  .hero .antetitulo { color: #F0CD5E; }
   .hero .contenedor { padding-block: 150px 56px; }
   .hero__botones .boton { width: 100%; }
   .hero__pie { top: 16px; bottom: auto; }
@@ -431,7 +439,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .info-lista li { display: flex; gap: 14px; align-items: flex-start; }
 .info-lista svg { flex-shrink: 0; margin-top: 3px; color: var(--terracota); }
 .info-lista .etiqueta { display: block; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tinta-suave); }
-.info-lista a { word-break: break-word; }
+.info-lista a { overflow-wrap: anywhere; }
 .tarjeta-whatsapp { background: var(--tinta); color: var(--texto-claro); border-radius: var(--radio); padding: 28px; display: flex; flex-direction: column; gap: 14px; }
 .tarjeta-whatsapp h2 { font-size: 1.5rem; }
 .tarjeta-whatsapp p { color: var(--texto-claro-2); }
