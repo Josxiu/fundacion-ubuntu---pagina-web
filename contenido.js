@@ -96,18 +96,19 @@ window.CONTENIDO = {
       botonDona: { texto: "Súmate / Dona", enlace: "#dona" },
       /* Si cambias esta foto, actualiza también la línea "preload" en index.html */
       imagen: {
-        archivo: "imagenes/inicio-hero.webp",
+        archivo: "imagenes/inicio-hero-hilos.webp",
         variantes: [
-          { archivo: "imagenes/inicio-hero-600.webp", ancho: 600 },
-          { archivo: "imagenes/inicio-hero-900.webp", ancho: 900 },
-          { archivo: "imagenes/inicio-hero-1200.webp", ancho: 1200 },
-          { archivo: "imagenes/inicio-hero-1600.webp", ancho: 1600 },
-          { archivo: "imagenes/inicio-hero.webp", ancho: 1920 }
+          { archivo: "imagenes/inicio-hero-hilos-600.webp", ancho: 600 },
+          { archivo: "imagenes/inicio-hero-hilos-900.webp", ancho: 900 },
+          { archivo: "imagenes/inicio-hero-hilos-1200.webp", ancho: 1200 },
+          { archivo: "imagenes/inicio-hero-hilos-1600.webp", ancho: 1600 },
+          { archivo: "imagenes/inicio-hero-hilos-1920.webp", ancho: 1920 },
+          { archivo: "imagenes/inicio-hero-hilos.webp", ancho: 2560 }
         ],
-        ancho: 1920, alto: 1486,
-        alt: "Mujer afrocolombiana con turbante naranja y vestido tradicional habla al público con un micrófono durante EXPO AFRO 2026 en Tuluá.",
-        pie: "EXPO AFRO 2026 · Tuluá",
-        enfoque: "62% 30%" /* qué parte de la foto se prioriza al recortarse en pantallas pequeñas */
+        ancho: 2560, alto: 1920,
+        alt: "Joven afrocolombiana con trenzas mira a la cámara, sentada frente a una iglesia amarilla.",
+        pie: "Exposición Hilos de libertad · Foto: Gabriel Pardo",
+        enfoque: "85% 50%" /* qué parte de la foto se prioriza al recortarse en pantallas pequeñas */
       }
     },
     ubuntu: {
@@ -239,20 +240,21 @@ window.CONTENIDO = {
       nota: "Fortalecido por el programa Parches en Paz de la Gobernación del Valle.",
       resumen: "Escuela intergeneracional de encuentros para jóvenes (14-28 años) en Tuluá: círculos de juntanza (sanación ancestral), formación en marimba de chonta y fotografía documental («Galería de Memoria Viva»).",
       logo: { archivo: "imagenes/logo-uparu.webp", ancho: 360, alto: 331, alt: "Logo del Laboratorio Cultural UPARU" },
-      fotoInicio: 2, /* la foto vertical del tambor, para la tarjeta grande */
+      fotoInicio: 2, /* la foto vertical de la marimba, para la tarjeta grande */
       imagenes: [
         {
-          archivo: "imagenes/proyecto-uparu.webp", pequena: "imagenes/proyecto-uparu-800.webp",
-          ancho: 1600, alto: 646,
-          alt: "Jóvenes sentados en círculo alrededor de marimbas de chonta y un tambor durante una sesión del Laboratorio Cultural UPARU.",
-          pie: "Formación en marimba de chonta"
+          archivo: "imagenes/proyecto-uparu-tambor.webp", pequena: "imagenes/proyecto-uparu-tambor-800.webp",
+          ancho: 1600, alto: 1386,
+          alt: "Una formadora con camiseta roja enseña a dos jóvenes a tocar el tambor durante una sesión del Laboratorio Cultural UPARU.",
+          pie: "Clase de tambor",
+          enfoque: "32% 30%"
         },
         {
-          archivo: "imagenes/proyecto-uparu-2.webp", pequena: "imagenes/proyecto-uparu-2-600.webp",
-          ancho: 960, alto: 1280,
-          alt: "Un formador con camiseta de la Fundación Ubuntu enseña a dos jóvenes a tocar el tambor.",
-          pie: "Práctica de percusión",
-          enfoque: "50% 72%"
+          archivo: "imagenes/proyecto-uparu-marimba.webp", pequena: "imagenes/proyecto-uparu-marimba-600.webp",
+          ancho: 1080, alto: 1410,
+          alt: "Una mujer con vestido morado toca la marimba de chonta frente a la bandera de Colombia en el Laboratorio Cultural UPARU.",
+          pie: "Formación en marimba de chonta",
+          enfoque: "50% 15%"
         }
       ]
     },
@@ -265,7 +267,8 @@ window.CONTENIDO = {
         "Transmisión de saberes estéticos",
         "Pasarelas culturales",
         "Conversatorios con sabedores de San Basilio de Palenque",
-        "Visibilización de emprendimientos NARP locales"
+        "Visibilización de emprendimientos NARP locales",
+        "Exposición fotográfica «Hilos de libertad, el mapa en la piel»"
       ],
       nota: "",
       resumen: "Evento cultural de tres días: saberes estéticos, pasarelas culturales, conversatorios con sabedores de San Basilio de Palenque y emprendimientos NARP locales.",
@@ -279,10 +282,11 @@ window.CONTENIDO = {
           pie: "Conversatorio · EXPO AFRO 2026"
         },
         {
-          archivo: "imagenes/proyecto-expoafro-2.webp", pequena: "imagenes/proyecto-expoafro-2-600.webp",
-          ancho: 1200, alto: 1692,
-          alt: "Tres mujeres afrocolombianas sonríen luciendo turbantes estampados en EXPO AFRO 2026.",
-          pie: "Turbantes · EXPO AFRO 2026"
+          archivo: "imagenes/galeria-hilos-retrato.webp", pequena: "imagenes/galeria-hilos-retrato-800.webp",
+          ancho: 1600, alto: 1066,
+          alt: "Retrato de una mujer afrocolombiana mayor con turbante estampado azul y rojo, que mira a la cámara con la mano en el pecho.",
+          pie: "Exposición Hilos de libertad · Foto: Gabriel Pardo",
+          enfoque: "65% 50%"
         }
       ]
     },
@@ -331,9 +335,20 @@ window.CONTENIDO = {
       { id: "uparu", nombre: "Laboratorio UPARU" },
       { id: "parches", nombre: "UPARU · Parches en Paz" },
       { id: "expo-afro", nombre: "EXPO AFRO" },
+      { id: "hilos", nombre: "Exposición Hilos de libertad" },
       { id: "crearte", nombre: "CreArte Comunitario" }
     ],
+    /* Las miniaturas son rectangulares (4:3): a las fotos verticales ponles
+       "enfoque" para que no se corten las caras. "50% 10%" = conserva la parte de arriba. */
     fotos: [
+      { grupo: "uparu", archivo: "imagenes/galeria-uparu-marimbas.webp", pequena: "imagenes/galeria-uparu-marimbas-800.webp", ancho: 1600, alto: 1141,
+        alt: "Jóvenes y adultos practican marimba de chonta en formación, frente a las banderas de Brasil y Colombia y el pendón del Laboratorio Cultural UPARU.", pie: "Práctica de marimba · Laboratorio Cultural UPARU" },
+      { grupo: "uparu", archivo: "imagenes/proyecto-uparu-tambor.webp", pequena: "imagenes/proyecto-uparu-tambor-800.webp", ancho: 1600, alto: 1386,
+        alt: "Una formadora con camiseta roja enseña a dos jóvenes a tocar el tambor.", pie: "Clase de tambor · Laboratorio Cultural UPARU", enfoque: "50% 20%" },
+      { grupo: "uparu", archivo: "imagenes/galeria-uparu-aprendiendo.webp", pequena: "imagenes/galeria-uparu-aprendiendo-800.webp", ancho: 1258, alto: 982,
+        alt: "Una formadora con camiseta rosada guía las manos de una joven sonriente sobre la marimba de chonta.", pie: "Aprendiendo marimba · Laboratorio Cultural UPARU" },
+      { grupo: "uparu", archivo: "imagenes/proyecto-uparu-marimba.webp", pequena: "imagenes/proyecto-uparu-marimba-600.webp", ancho: 1080, alto: 1410,
+        alt: "Una mujer con vestido morado toca la marimba de chonta frente a la bandera de Colombia.", pie: "Marimba de chonta · Laboratorio Cultural UPARU", enfoque: "50% 15%" },
       { grupo: "uparu", archivo: "imagenes/proyecto-uparu.webp", pequena: "imagenes/proyecto-uparu-800.webp", ancho: 1600, alto: 646,
         alt: "Jóvenes sentados en círculo alrededor de marimbas de chonta y un tambor.", pie: "Formación en marimba de chonta · Laboratorio Cultural UPARU" },
       { grupo: "uparu", archivo: "imagenes/proyecto-uparu-2.webp", pequena: "imagenes/proyecto-uparu-2-600.webp", ancho: 960, alto: 1280,
@@ -345,9 +360,23 @@ window.CONTENIDO = {
       { grupo: "expo-afro", archivo: "imagenes/proyecto-expoafro.webp", pequena: "imagenes/proyecto-expoafro-800.webp", ancho: 1600, alto: 1546,
         alt: "Sabedoras con turbantes conversan con micrófonos bajo una carpa de colores.", pie: "Conversatorio · EXPO AFRO 2026" },
       { grupo: "expo-afro", archivo: "imagenes/proyecto-expoafro-2.webp", pequena: "imagenes/proyecto-expoafro-2-600.webp", ancho: 1200, alto: 1692,
-        alt: "Tres mujeres afrocolombianas sonríen luciendo turbantes estampados.", pie: "Turbantes · EXPO AFRO 2026" },
+        alt: "Tres mujeres afrocolombianas sonríen luciendo turbantes estampados.", pie: "Turbantes · EXPO AFRO 2026", enfoque: "50% 5%" },
       { grupo: "expo-afro", archivo: "imagenes/inicio-hero-1200.webp", pequena: "imagenes/inicio-hero-600.webp", ancho: 1200, alto: 929,
         alt: "Mujer con turbante naranja habla al público con un micrófono junto a obras de arte expuestas.", pie: "Palabra y memoria · EXPO AFRO 2026" },
+      { grupo: "hilos", archivo: "imagenes/galeria-hilos-trenzas.webp", pequena: "imagenes/galeria-hilos-trenzas-800.webp", ancho: 1600, alto: 1066,
+        alt: "Detalle de trenzas pegadas en la cabeza; una trenza azul recorre el peinado como un río en un mapa.", pie: "El mapa en la piel · Hilos de libertad · Foto: Gabriel Pardo" },
+      { grupo: "hilos", archivo: "imagenes/galeria-hilos-mirada.webp", pequena: "imagenes/galeria-hilos-mirada-600.webp", ancho: 1200, alto: 1800,
+        alt: "Joven afrocolombiana con trenzas y chaqueta clara mira a la cámara frente a un mural de colores.", pie: "Mirada · Hilos de libertad · Foto: Gabriel Pardo", enfoque: "50% 10%" },
+      { grupo: "hilos", archivo: "imagenes/galeria-hilos-retrato.webp", pequena: "imagenes/galeria-hilos-retrato-800.webp", ancho: 1600, alto: 1066,
+        alt: "Retrato de una mujer afrocolombiana mayor con turbante estampado azul y rojo, que mira a la cámara con la mano en el pecho.", pie: "Retrato · Hilos de libertad · Foto: Gabriel Pardo" },
+      { grupo: "hilos", archivo: "imagenes/galeria-hilos-obra.webp", pequena: "imagenes/galeria-hilos-obra-600.webp", ancho: 1000, alto: 1401,
+        alt: "Retrato intervenido en blanco y negro de una mujer con turbante, atravesado por franjas verticales de color.", pie: "Retrato intervenido · Hilos de libertad · Foto: Gabriel Pardo", enfoque: "50% 10%" },
+      { grupo: "hilos", archivo: "imagenes/galeria-hilos-pensativa.webp", pequena: "imagenes/galeria-hilos-pensativa-600.webp", ancho: 1200, alto: 1800,
+        alt: "Joven afrocolombiana con trenzas, sentada, apoya la cara en la mano y mira hacia arriba.", pie: "Juventud y trenzas · Hilos de libertad · Foto: Gabriel Pardo", enfoque: "50% 25%" },
+      { grupo: "hilos", archivo: "imagenes/galeria-hilos-celular.webp", pequena: "imagenes/galeria-hilos-celular-600.webp", ancho: 1200, alto: 1800,
+        alt: "Joven afrocolombiana con trenzas y chaqueta clara mira su celular en la calle.", pie: "Trenzas · Hilos de libertad · Foto: Gabriel Pardo", enfoque: "50% 10%" },
+      { grupo: "hilos", archivo: "imagenes/galeria-hilos-iglesia.webp", pequena: "imagenes/galeria-hilos-iglesia-600.webp", ancho: 1200, alto: 1800,
+        alt: "Joven con trenzas sentada sobre un muro frente a una iglesia amarilla.", pie: "En el territorio · Hilos de libertad · Foto: Gabriel Pardo", enfoque: "50% 20%" },
       { grupo: "crearte", archivo: "imagenes/proyecto-crearte.webp", pequena: "imagenes/proyecto-crearte-800.webp", ancho: 1600, alto: 720,
         alt: "Niñas y niños escuchan un cuento mientras un joven toca marimba.", pie: "Cuentoterapia con marimba · CreArte Comunitario" },
       { grupo: "crearte", archivo: "imagenes/proyecto-crearte-2.webp", pequena: "imagenes/proyecto-crearte-2-600.webp", ancho: 1200, alto: 1500,

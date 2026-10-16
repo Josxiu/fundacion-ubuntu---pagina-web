@@ -374,7 +374,7 @@
     }).join("");
     var fotos = g.fotos.map(function (f, i) {
       return '<li data-grupo="' + esc(f.grupo) + '"><button type="button" class="miniatura" data-indice="' + i + '" aria-label="Ampliar foto: ' + esc(f.pie || f.alt) + '">' +
-        imagen({ archivo: f.pequena || f.archivo, ancho: f.ancho, alto: f.alto }, { alt: f.alt, sizes: "(max-width: 600px) 100vw, 400px" }) +
+        imagen({ archivo: f.pequena || f.archivo, ancho: f.ancho, alto: f.alto, enfoque: f.enfoque }, { alt: f.alt, sizes: "(max-width: 600px) 100vw, 400px" }) +
         (f.pie ? '<span class="miniatura__pie" aria-hidden="true">' + esc(f.pie) + "</span>" : "") +
         "</button></li>";
     }).join("");
