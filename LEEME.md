@@ -11,6 +11,7 @@ Sitio institucional de la Fundación Afrocolombiana Ubuntu Dejando Huella, hecho
 - **Dirección principal:** https://fundacionubuntudejandohuella.org. El dominio corto `funudeh.org` lleva a la principal.
 - **Dónde está publicado:** Cloudflare Pages, proyecto `funudeh`, en la cuenta de Cloudflare de la fundación. Los dominios también están comprados en esa cuenta y se renuevan solos cada año.
 - **Cómo se actualiza:** cada cambio que se sube a la rama `main` de GitHub se publica solo en uno o dos minutos. No hay que entrar a Cloudflare.
+- **Vistas previas para probar algo:** sube los cambios a una rama distinta de `main` (por ejemplo `prueba-galeria`). Cloudflare la publica sola en `https://prueba-galeria.funudeh.pages.dev`, sin tocar el sitio real, y ese enlace se puede compartir. Google no indexa las vistas previas. Si se aprueba, se une la rama a `main` y queda publicada en el sitio real.
 - **Direcciones de las páginas:** Cloudflare quita el `.html`, así que Contacto queda en `/contacto`. Los enlaces con `.html` siguen funcionando.
 
 ## Al cambiar cosas
